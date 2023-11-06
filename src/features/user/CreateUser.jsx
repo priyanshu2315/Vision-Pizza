@@ -4,6 +4,7 @@ import { updateName } from "./userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAddress } from "../../services/apiGeocoding";
+
 function CreateUser() {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function CreateUser() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!username) return;
-
+    console.log(` user name is ${username}`);
     dispatch(updateName(username));
     navigate("/menu");
   }
@@ -33,7 +34,7 @@ function CreateUser() {
 
       {username !== "" && (
         <div>
-          <Button type="primary" to="/menu">
+          <Button type="primary" onClick={handleSubmit}>
             Start ordering
           </Button>
         </div>
